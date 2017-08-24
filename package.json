@@ -23,6 +23,7 @@
   "devDependencies": {
     "electron": "^1.7.5",
     "electron-main-notification": "^1.0.1",
+    "ping": "^0.2.2",
     "standard": "^10.0.3"
   }
 }

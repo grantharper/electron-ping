@@ -1,13 +1,20 @@
-const { app, Menu, Tray } = require('electron')
-const notify = require('electron-main-notification')
+const { app, Menu, Tray } = require('electron');
+const notify = require('electron-main-notification');
+const path = require('path');
 
-let tray = null
+const blackIcon = 'tray_icon_black.png';
+const purpleIcon = 'tray_icon_purple.png';
+var imageState = purpleIcon;
+var imagePath = getIconImage(purpleIcon);
+
+let tray = null;
 app.on('ready', () => {
-    imageState = 'tray_icon_purple.png'
+    
     setInterval(function() {
         notify('Hi!', { 
         	body: 'I\'m your awesome electron app!',
-        	silent: false
+        	silent: true,
+        	image: imagePath
         })
     }, 3000)
     tray = new Tray(imageState)
@@ -40,4 +47,11 @@ function changeIcon(imageState) {
         imageState = 'tray_icon_black.png';
     }
     return imageState;
+}
+
+function getIconImage(icon){
+	var dirname = __dirname;
+	var fullPath = path.join(__dirname, icon);
+	console.log('fullPath: ' + fullPath);
+	return fullPath;
 }
