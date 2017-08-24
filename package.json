@@ -1,0 +1,26 @@
+{
+  "name": "electron-ping",
+  "version": "1.0.0",
+  "description": "electron app that determines internet connectivity",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grantharper/electron-ping.git"
+  },
+  "keywords": [
+    "electron"
+  ],
+  "author": "grantharper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/grantharper/electron-ping/issues"
+  },
+  "homepage": "https://github.com/grantharper/electron-ping#readme",
+  "devDependencies": {
+    "electron": "^1.7.5",
+    "standard": "^10.0.3"
+  }
+}
