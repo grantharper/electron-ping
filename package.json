@@ -4,7 +4,8 @@
   "description": "electron app that determines internet connectivity",
   "main": "index.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node_modules/.bin/electron ."
   },
   "repository": {
     "type": "git",
