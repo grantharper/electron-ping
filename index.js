@@ -5,15 +5,13 @@ const ping = require('ping');
 
 const domainToPing = 'google.com';
 
-const blackIcon = 'tray_icon_black.png';
-const purpleIcon = 'tray_icon_purple.png';
-let imageState = purpleIcon;
-let imagePath = getIconImage(purpleIcon);
+const blackIcon = path.join(__dirname, 'tray_icon_black.png');
+const purpleIcon = path.join(__dirname, 'tray_icon_purple.png');
 let wifiState = null;
 let tray = null;
 
 app.on('ready', () => {
-    tray = new Tray(imageState);
+    tray = new Tray(blackIcon);
     const contextMenu = Menu.buildFromTemplate([
         { role: 'quit' },
         {
@@ -34,19 +32,17 @@ app.on('ready', () => {
             console.log('notifying that wifi is down');
             wifiState = false;
             tray.setImage(blackIcon);
-            imageState = blackIcon;
-            notify('Dead!', {
-              body: 'Internet is down',
-              silent: false
+            notify('Internet Status Change', {
+              body: 'Connectivity has been lost',
+              silent: true
             });
           }else{
             console.log('notifying that wifi is up');
             wifiState = true;
             tray.setImage(purpleIcon);
-            imageState = purpleIcon;
-            notify('Alive!', {
-              body: 'Internet is up',
-              silent: false
+            notify('Internet Status Change', {
+              body: 'Connectivity has been restored',
+              silent: true
             });
           }
         }
@@ -57,18 +53,6 @@ app.on('ready', () => {
 
 function sayHello() {
     console.log("Hello from function!");
-}
-
-function changeIcon(imageState) {
-    console.log(imageState);
-    if (imageState == 'tray_icon_black.png') {
-        tray.setImage('tray_icon_purple.png');
-        imageState = 'tray_icon_purple.png';
-    } else {
-        tray.setImage('tray_icon_black.png');
-        imageState = 'tray_icon_black.png';
-    }
-    return imageState;
 }
 
 function getIconImage(icon){
