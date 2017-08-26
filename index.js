@@ -13,16 +13,16 @@ let wifiState = null;
 let tray = null;
 
 app.on('ready', () => {
-    tray = new Tray(imageState)
+    tray = new Tray(imageState);
     const contextMenu = Menu.buildFromTemplate([
         { role: 'quit' },
         {
             label: 'Hello!',
             click() { sayHello() }
         }
-    ])
-    tray.setToolTip('Internet Status')
-    tray.setContextMenu(contextMenu)
+    ]);
+    tray.setToolTip('Internet Status');
+    tray.setContextMenu(contextMenu);
 
     setInterval(function() {
       ping.promise.probe(domainToPing).then(function (pingResponse) {
@@ -52,8 +52,8 @@ app.on('ready', () => {
         }
       });
 
-    }, 1000)
-})
+    }, 1000);
+});
 
 function sayHello() {
     console.log("Hello from function!");
